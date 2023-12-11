@@ -1,0 +1,4 @@
+repository "ScrollWizard@Suhhangwoo@cloud"
+  path "/"
+    br "/main"
+    co "/main"
