@@ -24,11 +24,8 @@ public class SkillDataCreator : EditorWindow
 		skillData.Name = EditorGUILayout.TextField("스킬 이름", skillData.Name);
 		skillData.Accuracy = EditorGUILayout.IntField("명중률", skillData.Accuracy);
 		skillData.Property = (EProperty)EditorGUILayout.EnumPopup("속성", skillData.Property);
-		GUILayout.Label("레벨 별 데미지", EditorStyles.boldLabel);
-		for (int i = 0; i < skillData.Damage.Length; i++)
-		{
-			skillData.Damage[i] = EditorGUILayout.IntField(string.Format("데미지[{0}]", i), skillData.Damage[i]);
-		}
+		skillData.Damage = EditorGUILayout.TextField("레벨 별 데미지", skillData.Damage);
+
 		GUILayout.Label("사거리", EditorStyles.boldLabel);
 		EditorGUILayout.BeginHorizontal();
 		for (int i = 0; i < skillData.Range.Length; i++)

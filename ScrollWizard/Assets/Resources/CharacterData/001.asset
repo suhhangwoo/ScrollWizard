@@ -13,25 +13,20 @@ MonoBehaviour:
   m_Name: 001
   m_EditorClassIdentifier: 
   m_code: 001
-  m_name: "\uC11C\uD56D\uC6B0"
-  m_target: 2
-  m_atk: 010000000200000003000000
-  m_hp: 0a000000140000001e000000
-  m_spd: 050000000600000007000000
-  m_def: 10
-  m_avd: 10
+  m_name: 
+  m_target: 0
+  m_atk: 
+  m_hp: 
+  m_spd: 
+  m_def: 0
+  m_avd: 0
   m_sprite:
-  - {fileID: 21300000, guid: ac9a03b30977dbd45a9645dbce6c2cb3, type: 3}
-  - {fileID: 21300000, guid: 9e66ac532c894ae4da5ac604f1a41fa3, type: 3}
-  - {fileID: 21300000, guid: 3a708ab6e5eacd441ad8b0ff01ec2a87, type: 3}
-  - {fileID: 21300000, guid: 9ee2c69223ce95a45b72ecf781b7ddf0, type: 3}
-  - {fileID: 21300000, guid: 88eb6ef713aa16445ade21aeae0d6344, type: 3}
+  - {fileID: 21300000, guid: 38da40f33d9053e499e0285c4af92870, type: 3}
+  - {fileID: 21300000, guid: d5271c05895b97a44b596960ec7e11c9, type: 3}
+  - {fileID: 21300000, guid: f379173af4fae2f479cf1e32c9aae130, type: 3}
+  - {fileID: 21300000, guid: 452a5841060134a43b4119adeed0e19b, type: 3}
+  - {fileID: 21300000, guid: cf60ac92b8bfb104ba881b0411030e31, type: 3}
+  - {fileID: 21300000, guid: be2a40cbb4ad9c54c856af12812fedd7, type: 3}
   - {fileID: 21300000, guid: 1ee3351899d142342b61f44f32a7b05b, type: 3}
-  - {fileID: 21300000, guid: 093e510312103fb469d3cf5c7e555560, type: 3}
-  m_skillList:
-  - 12345
-  - 1234576786
-  m_propertyList:
-  - "\u3141\u3134\u3147"
-  - "\u3142\u3148\u3137"
-  - "\u314B\u314C\u314A"
+  m_skill: 
+  m_property: 

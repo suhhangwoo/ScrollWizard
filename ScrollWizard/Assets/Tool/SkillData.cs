@@ -23,8 +23,8 @@ public class SkillData : ScriptableObject
 	private EProperty m_property;
 	public EProperty Property { get { return m_property; } set { m_property = value; } }
 	[SerializeField]
-	private int[] m_damage;
-	public int[] Damage { get { return m_damage; } set { m_damage = value; } }
+	private string m_damage;
+	public string Damage { get { return m_damage; } set { m_damage = value; } }
 	[SerializeField]
 	private bool[] m_range;
 	public bool[] Range { get { return m_range; } set { m_range = value; } }
@@ -41,7 +41,7 @@ public class SkillData : ScriptableObject
 		Name = "";
 		Accuracy = 0;
 		Property = EProperty.None;
-		Damage = new int[5];
+		Damage = "";
 		Range = new bool[8];
 		Count = 0;
 		KeywordList = new List<string>();
@@ -52,10 +52,8 @@ public class SkillData : ScriptableObject
 		Debug.Log("Name : " + Name);
 		Debug.Log("Accuracy : " + Accuracy);
 		Debug.Log("Property : " + Property);
-		for (int i = 0; i < 5; i++)
-		{
-			Debug.Log("Damage[" + i + "] : " + Damage[i]);
-		}
+		Debug.Log("Damage : " + Damage);
+
 		for (int i = 0; i < 8; i++)
 		{
 			Debug.Log("Range[" + i + "] : " + Range[i]);
@@ -72,7 +70,7 @@ public class SkillData : ScriptableObject
 		this.Name = other.Name;
 		this.Accuracy = other.Accuracy;
 		this.Property = other.Property;
-		this.Damage = (int[])other.Damage.Clone();
+		this.Damage = other.Damage;
 		this.Range = (bool[])other.Range.Clone();
 		this.KeywordList = new List<string>(other.KeywordList);
 		this.Count = other.Count;

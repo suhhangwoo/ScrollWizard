@@ -50,11 +50,8 @@ public class SkillDataViewer : EditorWindow
 				arrSkillData[i].Name = EditorGUILayout.TextField(arrSkillData[i].Name, GUILayout.MinWidth(WIDTH), GUILayout.MaxWidth(WIDTH)); GUILayout.Space(SPACE);
 				arrSkillData[i].Accuracy = EditorGUILayout.IntField(arrSkillData[i].Accuracy, GUILayout.MinWidth(WIDTH), GUILayout.MaxWidth(WIDTH)); GUILayout.Space(SPACE);
 				arrSkillData[i].Property = (EProperty)EditorGUILayout.EnumPopup(arrSkillData[i].Property, GUILayout.MinWidth(WIDTH), GUILayout.MaxWidth(WIDTH)); GUILayout.Space(SPACE);
-				arrSkillData[i].Count = EditorGUILayout.IntField(arrSkillData[i].Count, GUILayout.MinWidth(WIDTH), GUILayout.MaxWidth(WIDTH)); 
-				for(int j = 0; j < arrSkillData[i].Damage.Length; j++)
-				{
-					arrSkillData[i].Damage[j] = EditorGUILayout.IntField(arrSkillData[i].Damage[j], GUILayout.MinWidth(20), GUILayout.MaxWidth(20));
-				}
+				arrSkillData[i].Count = EditorGUILayout.IntField(arrSkillData[i].Count, GUILayout.MinWidth(WIDTH), GUILayout.MaxWidth(WIDTH));
+				arrSkillData[i].Damage = EditorGUILayout.TextField(arrSkillData[i].Damage, GUILayout.MinWidth(WIDTH), GUILayout.MaxWidth(WIDTH)); GUILayout.Space(SPACE);
 				GUILayout.Space(SPACE);
 				for (int j = 0; j < arrSkillData[i].Range.Length;j++)
 				{

@@ -42,7 +42,7 @@ public class CharacterDataViewer : EditorWindow
 			}
 			for (int j = 0; j < textData2.Length; j++)
 			{
-				GUILayout.Label(string.Format("{0}", textData2[j]), EditorStyles.boldLabel, GUILayout.MinWidth(WIDTH2), GUILayout.MaxWidth(WIDTH2));
+				GUILayout.Label(string.Format("{0}", textData2[j]), EditorStyles.boldLabel, GUILayout.MinWidth(WIDTH), GUILayout.MaxWidth(WIDTH));
 				GUILayout.Space(SPACE);
 			}
 			for (int j = 0; j < textData3.Length; j++)
@@ -52,7 +52,7 @@ public class CharacterDataViewer : EditorWindow
 			}
 			for (int j = 0; j < textData4.Length; j++)
 			{
-				GUILayout.Label(string.Format("{0}", textData4[j]), EditorStyles.boldLabel, GUILayout.MinWidth(WIDTH2 * 2), GUILayout.MaxWidth(WIDTH2 * 2));
+				GUILayout.Label(string.Format("{0}", textData4[j]), EditorStyles.boldLabel, GUILayout.MinWidth(WIDTH2), GUILayout.MaxWidth(WIDTH2));
 				GUILayout.Space(SPACE);
 			}
 			GUILayout.FlexibleSpace();
@@ -64,37 +64,14 @@ public class CharacterDataViewer : EditorWindow
 				arrCharacterData[i].Code = EditorGUILayout.TextField(arrCharacterData[i].Code, GUILayout.MinWidth(WIDTH), GUILayout.MaxWidth(WIDTH)); GUILayout.Space(SPACE);
 				arrCharacterData[i].Name = EditorGUILayout.TextField(arrCharacterData[i].Name, GUILayout.MinWidth(WIDTH), GUILayout.MaxWidth(WIDTH)); GUILayout.Space(SPACE);
 				arrCharacterData[i].Target = (ETarget)EditorGUILayout.EnumPopup(arrCharacterData[i].Target, GUILayout.MinWidth(WIDTH), GUILayout.MaxWidth(WIDTH)); GUILayout.Space(SPACE);
-				GUILayout.Label(" | ", EditorStyles.boldLabel, GUILayout.MinWidth(20), GUILayout.MaxWidth(20));
-				for (int j = 0; j < arrCharacterData[i].Atk.Length; j++)
-				{
-					arrCharacterData[i].Atk[j] = EditorGUILayout.IntField(arrCharacterData[i].Atk[j], GUILayout.MinWidth(20), GUILayout.MaxWidth(20));
-				}
-				GUILayout.Label(" | ", EditorStyles.boldLabel, GUILayout.MinWidth(20), GUILayout.MaxWidth(20));
-				for (int j = 0; j < arrCharacterData[i].Hp.Length; j++)
-				{
-					arrCharacterData[i].Hp[j] = EditorGUILayout.IntField(arrCharacterData[i].Hp[j], GUILayout.MinWidth(20), GUILayout.MaxWidth(20));
-				}
-				GUILayout.Label(" | ", EditorStyles.boldLabel, GUILayout.MinWidth(20), GUILayout.MaxWidth(20));
-				for (int j = 0; j < arrCharacterData[i].Spd.Length; j++)
-				{
-					arrCharacterData[i].Spd[j] = EditorGUILayout.IntField(arrCharacterData[i].Spd[j], GUILayout.MinWidth(20), GUILayout.MaxWidth(20));
-				}
-				GUILayout.Label(" | ", EditorStyles.boldLabel, GUILayout.MinWidth(20), GUILayout.MaxWidth(20));
+				arrCharacterData[i].Atk = EditorGUILayout.TextField(arrCharacterData[i].Atk, GUILayout.MinWidth(WIDTH), GUILayout.MaxWidth(WIDTH)); GUILayout.Space(SPACE);
+				arrCharacterData[i].Hp = EditorGUILayout.TextField(arrCharacterData[i].Hp, GUILayout.MinWidth(WIDTH), GUILayout.MaxWidth(WIDTH)); GUILayout.Space(SPACE);
+				arrCharacterData[i].Spd = EditorGUILayout.TextField(arrCharacterData[i].Spd, GUILayout.MinWidth(WIDTH), GUILayout.MaxWidth(WIDTH)); GUILayout.Space(SPACE);
 				arrCharacterData[i].Def = EditorGUILayout.IntField(arrCharacterData[i].Def, GUILayout.MinWidth(WIDTH), GUILayout.MaxWidth(WIDTH));
 				arrCharacterData[i].Avd = EditorGUILayout.IntField(arrCharacterData[i].Avd, GUILayout.MinWidth(WIDTH), GUILayout.MaxWidth(WIDTH));
+				arrCharacterData[i].Skill = EditorGUILayout.TextField(arrCharacterData[i].Skill, GUILayout.MinWidth(WIDTH2), GUILayout.MaxWidth(WIDTH2));
+				arrCharacterData[i].Property = EditorGUILayout.TextField(arrCharacterData[i].Property, GUILayout.MinWidth(WIDTH2), GUILayout.MaxWidth(WIDTH2));
 
-				string str = "";
-				for (int j = 0; j < arrCharacterData[i].SkillList.Count; j++)
-				{
-					str += ("[" + arrCharacterData[i].SkillList[j] + "] ");
-				}
-				GUILayout.Label(str, GUILayout.MinWidth(WIDTH2), GUILayout.MaxWidth(WIDTH2 * 3));
-				str = "";
-				for (int j = 0; j < arrCharacterData[i].PropertyList.Count; j++)
-				{
-					str += ("[" + arrCharacterData[i].PropertyList[j] + "] ");
-				}
-				GUILayout.Label(str, GUILayout.MinWidth(WIDTH2), GUILayout.MaxWidth(WIDTH2 * 3));
 				GUILayout.FlexibleSpace();
 				GUILayout.EndHorizontal();
 			}
