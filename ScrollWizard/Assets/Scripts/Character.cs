@@ -42,8 +42,8 @@ public class Character : MonoBehaviour
 
     public Data curData; // 현재 수치
     public Data startData; // 초기 수치
-    public string code;
-    public int priority;
+    public string code; // 캐릭터의 코드
+    public int priority; // 우선 순위
 
     public bool is_arrive = true;
 
@@ -74,8 +74,10 @@ public class Character : MonoBehaviour
     {
         // DB에서 값 찾아 저장
         this.code = code;
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = GameManager.instance.s;
 
-        if (code == "player")
+        if (code == "Player")
         {
             // 플레이어 스탯 추가 저장 (아이템, PlayerPref 정보 등)
             priority = 9;

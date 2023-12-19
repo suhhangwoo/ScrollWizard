@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public GameObject cursorObj; // 커서 위치에 있는 오브젝트
     public GameObject selectObj; // 클릭한 오브젝트
+    public GameObject cloneObj; // 소환수가 나올 위치를 보여주는 환영 오브젝트
     public GameObject characterPrefab; // 적 프리팹
     public GameObject bigCharacterPrefab; // 큰 적 프리팹
     public List<Character> turnList; // 진행될 턴 순서
@@ -16,9 +17,9 @@ public class GameManager : MonoBehaviour
     // 0 1 2 3 | 4 5 6 7
     // 3 2 1 0 | 0 1 2 3
     public GameObject[] posObj; // 캐릭터가 움직일 8칸의 위치
-    public List<GameObject> characterObj;
+    public List<GameObject> characterObj; // 현재 생성된 캐릭터들
 
-    public string activeSkillcode;
+    public string activeSkillcode; // 버튼을 누른 스킬의 코드값
 
     public enum BattleState { START, PLAYER, SUMMON, ENEMY, WIN, LOSE }
     public BattleState state;
@@ -86,6 +87,7 @@ public class GameManager : MonoBehaviour
         turnList.Clear();
         turnList.AddRange(survival);
         // 순서바 다시 그리기
+
     }
 
     void NextTurn()
@@ -110,7 +112,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    int summonSkillCount = 1;
+    int summonSkillCount = 3; // 사용하지 않은 소환수 스킬의 개수
 
     void CreateSummon(string code)
     {
@@ -143,7 +145,26 @@ public class GameManager : MonoBehaviour
 
     bool isEndZeroTurn()
     {
-        if (summonSkillCount == 0)
+        if (summonSkillCount == 0 || isFullAllyField()) // 모든 소환수 스킬을 사용했거나 필드가 꽉 차있으면 소환 턴 종료
+            return true;
+
+        return false;
+    }
+
+    bool isFullAllyField()
+    {
+        SpawnPos spawn;
+        int count = 0;
+
+        for (int i = 0; i < 4; i++)
+        {
+            spawn = posObj[i].GetComponent<SpawnPos>();
+
+            if (spawn.linkedObj != null)
+                count++;
+        }
+
+        if (count == 4)
             return true;
 
         return false;
@@ -159,6 +180,8 @@ public class GameManager : MonoBehaviour
         // 턴 넘기기 버튼 사용하거나 사용할 수 있는 소환수 스킬이 더 없으면 다음 턴으로
         yield return new WaitUntil(() => isEndZeroTurn());
 
+        Debug.Log("소환턴 종료");
+
         for (int i = 0; i < posObj.Length; i++)
         {
             BoxCollider2D collider2D = posObj[i].GetComponent<BoxCollider2D>();
@@ -171,8 +194,6 @@ public class GameManager : MonoBehaviour
         //TurnCalculation();
         //NextTurn();
     }
-
-    public GameObject cloneObj;
 
     void MakeCharacter(GameObject obj, string code)
     {
