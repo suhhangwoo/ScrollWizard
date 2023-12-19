@@ -1,40 +1,59 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct ChangeEffect
+{
+    public string name;
+    public int turn;
+
+    public ChangeEffect(string name, int turn)
+    {
+        this.name = name;
+        this.turn = turn;
+    }
+}
+
+public struct Data
+{
+    public int hp;  // hp
+    public int def;  // 방어
+    public int spd;  // 스피드
+    public int eva;  // 회피 
+
+    public void CopyData(Data origin)
+    {
+        hp = origin.hp;
+        def = origin.def;
+        spd = origin.spd;
+        eva = origin.eva;
+    }
+}
+
 public class Character : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public Animator Animin;
-    public Collider2D Coll;
-    public Rigidbody2D rigid;
-    public SpriteRenderer Spriter;
-    public Transform targetpos;
-    //리스트
-    public List<string> Skills; //스킬
-    public List<string> Hediffs;//디버프
+    Transform targetpos;
+    [SerializeField]
+    float movespeed; // 캐릭터 이동속도
 
-    public float movespeed = 2.0f; //캐릭터 이동속도
-    //속성
+    public List<string> skills; // 스킬
+    public List<ChangeEffect> state; // 상태
 
-    public int Hp;  //hp
-    public int MaxHp; //최대hp
-    public int Def;  //방어
-    public int Spd;  //스피드
-    public int Eva;  //회피 
+    public Data curData; // 현재 수치
+    public Data startData; // 초기 수치
+    public string code;
+    public int priority;
 
     public bool is_arrive = true;
 
-    // Start is called before the first frame update
-    private void Awake()
+    void Awake()
     {
-        Animin = GetComponent<Animator>();
-        Coll = GetComponent<Collider2D>();
-        Spriter = GetComponent<SpriteRenderer>();
-        rigid = GetComponent<Rigidbody2D>();
         targetpos = transform;
-        Skills = new List<string>();
-        Hediffs = new List<string>();
+        movespeed = 5.0f;
+
+        skills = new List<string>();
+        state = new List<ChangeEffect>();
     }
 
     void Update()
@@ -42,49 +61,74 @@ public class Character : MonoBehaviour
         if (!is_arrive)
         {
             float step = movespeed * Time.deltaTime;
-            transform.position = Vector2.Lerp(transform.position, targetpos.position, step); //천천히 움직이는 놈  
+            transform.position = Vector2.Lerp(transform.position, targetpos.position, step); 
+
             if (targetpos.position == transform.position)
             {
                 is_arrive = true;
             }
         }
     }
-    public void Addhediff(string hediffcode)
+
+    public void Init(string code)
     {
-        Skills.Add(hediffcode);
+        // DB에서 값 찾아 저장
+        this.code = code;
+
+        if (code == "player")
+        {
+            // 플레이어 스탯 추가 저장 (아이템, PlayerPref 정보 등)
+            priority = 9;
+        }
     }
-    public void AddSkill(string skillcode)
+
+    public bool TakeDamage(int dmg)
     {
-        Skills.Add(skillcode);
+        curData.hp -= dmg;
+
+        if (curData.hp <= 0)
+            return true;
+
+        return false;
     }
-    public string GetSkillcode(int index)
+
+    public void Heal(int amount)
     {
-        return Skills[index];//겟터는 던져주는용도다.
+        curData.hp += amount;
+
+        if (curData.hp > startData.hp)
+            curData.hp = startData.hp;
     }
-    public string GetHediffcode(int index)
-    {
-        return Hediffs[index];
-    }
-    public void Init(Data data)
-    {
-        Hp = data.Hp;
-        MaxHp = data.MaxHp;
-        Def = data.Def;
-        Spd = data.Spd;
-        Eva = data.Eva;
-    }
+
     public void Move(Transform pos)
     {
         targetpos = pos;
         is_arrive = false;
     }
-}
-public class Data
-{
-    public int Hp;
-    public int MaxHp;
-    public int Def;
-    public int Spd;
-    public int Eva;
-}
 
+    public void Translucence() // 그림을 반투명하게
+    {
+        SpriteRenderer s = GetComponent<SpriteRenderer>();
+        Color color;
+        color = s.color;
+        color.a = 0.5f;
+        s.color = color;
+    }
+
+    public void AddState(string name, int turn)
+    {
+        state.Add(new ChangeEffect(name, turn));
+    }
+    public string GetState(int index)
+    {
+        return state[index].name;
+    }
+    public void AddSkill(string skillcode)
+    {
+        skills.Add(skillcode);
+    }
+    public string GetSkill(int index)
+    {
+        return skills[index];
+    }
+}
