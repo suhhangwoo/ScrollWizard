@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 128378348}
   - component: {fileID: 128378347}
   m_Layer: 0
-  m_Name: back
+  m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -217,28 +217,14 @@ GameObject:
   m_Component:
   - component: {fileID: 190176628}
   - component: {fileID: 190176626}
-  - component: {fileID: 190176625}
+  - component: {fileID: 190176629}
   m_Layer: 0
-  m_Name: SpawnPos (4)
+  m_Name: Block (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &190176625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 190176624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3969fefe5729084ea226270e0f7bd87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  linkedObj: {fileID: 0}
-  character: {fileID: 0}
 --- !u!61 &190176626
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -299,6 +285,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &190176629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190176624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5676853512951c34483df988d91b2728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkedObj: {fileID: 0}
+  character: {fileID: 0}
+  spriteRenderer: {fileID: 0}
 --- !u!1 &206870507
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,28 +310,14 @@ GameObject:
   m_Component:
   - component: {fileID: 206870511}
   - component: {fileID: 206870509}
-  - component: {fileID: 206870508}
+  - component: {fileID: 206870512}
   m_Layer: 0
-  m_Name: SpawnPos (1)
+  m_Name: Block (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &206870508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 206870507}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3969fefe5729084ea226270e0f7bd87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  linkedObj: {fileID: 0}
-  character: {fileID: 0}
 --- !u!61 &206870509
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -391,6 +378,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &206870512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206870507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5676853512951c34483df988d91b2728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkedObj: {fileID: 0}
+  character: {fileID: 0}
+  spriteRenderer: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,28 +673,14 @@ GameObject:
   m_Component:
   - component: {fileID: 590011770}
   - component: {fileID: 590011768}
-  - component: {fileID: 590011767}
+  - component: {fileID: 590011771}
   m_Layer: 0
-  m_Name: SpawnPos (2)
+  m_Name: Block (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &590011767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 590011766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3969fefe5729084ea226270e0f7bd87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  linkedObj: {fileID: 0}
-  character: {fileID: 0}
 --- !u!61 &590011768
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -753,6 +741,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &590011771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590011766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5676853512951c34483df988d91b2728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkedObj: {fileID: 0}
+  character: {fileID: 0}
+  spriteRenderer: {fileID: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,28 +848,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1032507266}
   - component: {fileID: 1032507264}
-  - component: {fileID: 1032507263}
+  - component: {fileID: 1032507267}
   m_Layer: 0
-  m_Name: SpawnPos (6)
+  m_Name: Block (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1032507263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1032507262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3969fefe5729084ea226270e0f7bd87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  linkedObj: {fileID: 0}
-  character: {fileID: 0}
 --- !u!61 &1032507264
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -927,6 +916,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1032507267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032507262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5676853512951c34483df988d91b2728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkedObj: {fileID: 0}
+  character: {fileID: 0}
+  spriteRenderer: {fileID: 0}
 --- !u!1 &1179898565
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,28 +1074,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1219496485}
   - component: {fileID: 1219496483}
-  - component: {fileID: 1219496482}
+  - component: {fileID: 1219496486}
   m_Layer: 0
-  m_Name: SpawnPos (3)
+  m_Name: Block (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1219496482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1219496481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3969fefe5729084ea226270e0f7bd87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  linkedObj: {fileID: 0}
-  character: {fileID: 0}
 --- !u!61 &1219496483
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1152,6 +1142,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1219496486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219496481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5676853512951c34483df988d91b2728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkedObj: {fileID: 0}
+  character: {fileID: 0}
+  spriteRenderer: {fileID: 0}
 --- !u!1 &1482569621
 GameObject:
   m_ObjectHideFlags: 0
@@ -1333,28 +1338,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1717876831}
   - component: {fileID: 1717876829}
-  - component: {fileID: 1717876828}
+  - component: {fileID: 1717876832}
   m_Layer: 0
-  m_Name: SpawnPos (7)
+  m_Name: Block (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1717876828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1717876827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3969fefe5729084ea226270e0f7bd87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  linkedObj: {fileID: 0}
-  character: {fileID: 0}
 --- !u!61 &1717876829
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1415,6 +1406,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1717876832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1717876827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5676853512951c34483df988d91b2728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkedObj: {fileID: 0}
+  character: {fileID: 0}
+  spriteRenderer: {fileID: 0}
 --- !u!1 &1783361807
 GameObject:
   m_ObjectHideFlags: 0
@@ -1446,10 +1452,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursorObj: {fileID: 0}
   selectObj: {fileID: 0}
+  cloneObj: {fileID: 0}
   characterPrefab: {fileID: 688383995352735562, guid: f338e86ab862ad940895a692f487654c, type: 3}
   bigCharacterPrefab: {fileID: 1689753550076638526, guid: 16958680e5db5da49b167cc6915e9c72, type: 3}
   turnList: []
-  posObj:
+  blockObj:
   - {fileID: 688383995293770644}
   - {fileID: 206870507}
   - {fileID: 590011766}
@@ -1461,8 +1468,9 @@ MonoBehaviour:
   characterObj: []
   activeSkillcode: 
   state: 0
-  cloneObj: {fileID: 0}
-  s: {fileID: 21300000, guid: 91f433160cd5e2f41943b3b475ffacb3, type: 3}
+  ally: {fileID: 21300000, guid: 91f433160cd5e2f41943b3b475ffacb3, type: 3}
+  enemy: {fileID: 21300000, guid: 17608ba80c9aba843a55860f55ffe712, type: 3}
+  player: {fileID: 21300000, guid: 973b46007f7810f4f920c88d99156115, type: 3}
 --- !u!4 &1783361809
 Transform:
   m_ObjectHideFlags: 0
@@ -1567,28 +1575,14 @@ GameObject:
   m_Component:
   - component: {fileID: 2120890235}
   - component: {fileID: 2120890233}
-  - component: {fileID: 2120890232}
+  - component: {fileID: 2120890236}
   m_Layer: 0
-  m_Name: SpawnPos (5)
+  m_Name: Block (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2120890232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2120890231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3969fefe5729084ea226270e0f7bd87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  linkedObj: {fileID: 0}
-  character: {fileID: 0}
 --- !u!61 &2120890233
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1649,6 +1643,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2120890236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120890231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5676853512951c34483df988d91b2728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkedObj: {fileID: 0}
+  character: {fileID: 0}
+  spriteRenderer: {fileID: 0}
 --- !u!1 &2128735551
 GameObject:
   m_ObjectHideFlags: 0
@@ -1740,7 +1749,7 @@ GameObject:
   - component: {fileID: 7316817018657751151}
   - component: {fileID: 8313512379848570190}
   m_Layer: 0
-  m_Name: SpawnPos
+  m_Name: Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1815,11 +1824,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 688383995293770644}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3969fefe5729084ea226270e0f7bd87, type: 3}
+  m_Script: {fileID: 11500000, guid: 5676853512951c34483df988d91b2728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   linkedObj: {fileID: 0}
   character: {fileID: 0}
+  spriteRenderer: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
