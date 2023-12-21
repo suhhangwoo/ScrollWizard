@@ -288,15 +288,15 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public SkillData GetSkillData(string Code)
+    public SkillData GetSkillData(string code)
     {
-        SkillData skill = Resources.Load<SkillData>("SkillData/" + Code);
+        SkillData skill = FileHandler.LoadSO<SkillData>("SkillData", code);
         return skill;
     }
 
-    public CharacterData GetCharacterData(string Code)
+    public CharacterData GetCharacterData(string code)
     {
-        CharacterData character = Resources.Load<CharacterData>("CharacterData/" + Code);
+        CharacterData character = FileHandler.LoadSO<CharacterData>("CharacterData", code);
         return character;
     }
 
@@ -326,9 +326,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private int[] ConvertIntArray(string input)
+    private int[] ConvertIntArray(string input, char op)
     {
-        string[] parts = input.Split('/');
+        string[] parts = input.Split(op);
         int[] numbers = new int[parts.Length];
 
         for (int i = 0; i < parts.Length; i++)
