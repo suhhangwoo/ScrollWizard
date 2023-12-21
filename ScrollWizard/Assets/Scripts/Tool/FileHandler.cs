@@ -22,7 +22,7 @@ public static class FileHandler
 			AddressableAssetSettings settings = AddressableAssetSettingsDefaultObject.Settings;
 			string guid = AssetDatabase.AssetPathToGUID(path); // 생성된 에셋의 GUID 획득
 			AddressableAssetEntry assetEntry = settings.CreateOrMoveEntry(guid, settings.DefaultGroup); // Addressable로 에셋 등록
-			assetEntry.SetAddress($"{createPath}/{fileName}"); // 에셋 주소 설정
+			assetEntry.SetAddress(path); // 에셋 주소 설정
 			UnityEditor.EditorUtility.SetDirty(scriptableObject);   // 에디터에게 해당 에셋이 변경되었다고 알림
 			UnityEditor.AssetDatabase.SaveAssets(); // 에셋 데이터 저장
 			UnityEditor.AssetDatabase.Refresh(); // 에셋 데이터 새로고침

@@ -167,6 +167,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 38dbeb65b68a30748b84d5d61588ccc8
+    m_Address: Assets/GameData/CharacterData/test1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8db1c38e75de10a40b22c8ad4ce7ff8d
+    m_Address: Assets/GameData/SkillData/test1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a8918457542652348951fec6804f5a1b, type: 2}
   m_SchemaSet:
