@@ -66,6 +66,13 @@ public class SkillDataViewer : EditorWindow
 				GUILayout.Label(keywords, GUILayout.MinWidth(WIDTH2), GUILayout.MaxWidth(WIDTH2));
 				GUILayout.FlexibleSpace();
 				GUILayout.EndHorizontal();
+
+				if (GUI.changed)
+				{
+					EditorUtility.SetDirty(arrSkillData[i]);
+					AssetDatabase.SaveAssets();
+					AssetDatabase.Refresh();
+				}
 			}
 			scrollview.handleScrollWheel = true;
 			scrollPosition.Set(scrollview.scrollPosition.x, scrollview.scrollPosition.y);

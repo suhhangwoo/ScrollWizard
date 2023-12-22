@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_code: CH3_0003_Test
   m_characterCode:
-  - 12
-  - 2
-  - 3
+  - E1_0007
+  - 5
+  - 10
   - 4
-  m_probability: 2
+  m_probability: 50

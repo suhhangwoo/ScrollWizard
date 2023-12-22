@@ -55,6 +55,13 @@ public class CharacterPositionDataViewer : EditorWindow
 					EditorGUILayout.Space(10);
 					Data[i][j].Probability = EditorGUILayout.IntField(Data[i][j].Probability, GUILayout.MinWidth(75), GUILayout.MaxWidth(75));
 					GUILayout.EndHorizontal();
+
+					if (GUI.changed)
+					{
+						EditorUtility.SetDirty(Data[i][j]);
+						AssetDatabase.SaveAssets();
+						AssetDatabase.Refresh();
+					}
 				}
 			}
 			

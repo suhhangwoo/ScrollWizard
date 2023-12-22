@@ -15,7 +15,7 @@ MonoBehaviour:
   m_code: CH3_0002_Test
   m_characterCode:
   - 2
-  - 3
+  - test1
   - 4
   - 5
   m_probability: 4

@@ -16,6 +16,6 @@ MonoBehaviour:
   m_characterCode:
   - 1
   - 2
-  - 3
+  - test1
   - 4
   m_probability: 3

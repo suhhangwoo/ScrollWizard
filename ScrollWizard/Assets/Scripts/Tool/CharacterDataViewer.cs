@@ -62,6 +62,13 @@ public class CharacterDataViewer : EditorWindow
 
 				GUILayout.FlexibleSpace();
 				GUILayout.EndHorizontal();
+
+				if (GUI.changed)
+				{
+					EditorUtility.SetDirty(arrCharacterData[i]);
+					AssetDatabase.SaveAssets();
+					AssetDatabase.Refresh();
+				}
 			}
 			scrollview.handleScrollWheel = true;
 			scrollPosition.Set(scrollview.scrollPosition.x, scrollview.scrollPosition.y);
