@@ -18,6 +18,18 @@ public struct BlockData
     }
 }
 
+public struct SkillInfo
+{
+    public string code;
+    public int count;
+
+    public void Init(string code, int count)
+    {
+        this.code = code;
+        this.count = count;
+    }
+}
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -31,13 +43,16 @@ public class GameManager : MonoBehaviour
 
     public List<Character> turnList; // 진행될 턴 순서
 
+    public SkillInfo[] skillInfoArr; // 플레이어 보유 스킬 정보
+
     // 0 1 2 3 | 4 5 6 7
     // 3 2 1 0 | 0 1 2 3
     public GameObject[] blockObj; // 캐릭터가 움직일 8칸의 위치
-    public BlockData[] blockData; // 8칸의 정보
+    public BlockData[] blockDataArr; // 8칸의 정보
     public List<GameObject> characterObj; // 현재 생성된 캐릭터들
 
     public string activeSkillcode; // 버튼을 누른 스킬의 코드값
+    public int summonSkillCount; // 사용하지 않은 소환수 스킬의 개수
 
     public enum BattleState { START, PLAYER, SUMMON, ENEMY, WIN, LOSE }
     public BattleState state;
@@ -48,14 +63,31 @@ public class GameManager : MonoBehaviour
         cursorObj = null;
         cloneObj = null;
         activeSkillcode = null;
+        summonSkillCount = 5;
         turnList = new List<Character>();
-        blockData = new BlockData[8];
+        skillInfoArr = new SkillInfo[6];
+        blockDataArr = new BlockData[8];
         characterObj = new List<GameObject>();
 
-        for (int i = 0; i < blockData.Length; i++)
-            blockData[i].Init(blockObj[i]);
+        for (int i = 0; i < blockDataArr.Length; i++)
+            blockDataArr[i].Init(blockObj[i]);
 
         PlayerPrefs.SetInt("pos", 0);
+        PlayerPrefs.SetString("skill code", "FI_0001/IC_0001/NA_0001");
+        PlayerPrefs.SetString("skill count", "10/10/10");
+
+        string[] tmpStr = PlayerPrefs.GetString("skill code").Split('/');
+        int[] tmpInt = ConvertIntArray(PlayerPrefs.GetString("skill count"), '/');
+
+        for (int i = 0; i < tmpStr.Length; i++)
+        {
+            skillInfoArr[i].Init(tmpStr[i], tmpInt[i]);
+            
+            if (tmpStr[i][0].Equals('S'))
+            {
+                summonSkillCount++;
+            }
+        }
     }
 
     private void Start()
@@ -74,7 +106,7 @@ public class GameManager : MonoBehaviour
             MoveClone();
 
             if (isObjClick())
-                CreateSummon("SU_0001");
+                CreateSummon("S1_0001");
         }
     }
 
@@ -134,9 +166,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private int summonSkillCount = 3; // 사용하지 않은 소환수 스킬의 개수
-
-    void CreateSummon(string code)
+    private void CreateSummon(string code)
     {
         Destroy(cloneObj);
         cloneObj = null;
@@ -183,7 +213,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < 4; i++)
         {
-            if (blockData[i].isOnCharacter)
+            if (blockDataArr[i].isOnCharacter)
                 count++;
         }
 
@@ -222,12 +252,12 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < 4; i++)
         {
-            if (obj == blockData[i].obj)
+            if (obj == blockDataArr[i].obj)
             {
-                blockData[i].isOnCharacter = true;
-                blockData[i].info.CreateCharacter(characterPrefab);
-                characterObj.Add(blockData[i].info.linkedObj);
-                blockData[i].info.character.Init(code);
+                blockDataArr[i].isOnCharacter = true;
+                blockDataArr[i].info.CreateCharacter(characterPrefab);
+                characterObj.Add(blockDataArr[i].info.linkedObj);
+                blockDataArr[i].info.character.Init(code);
                 break;
             }
         }
@@ -243,9 +273,9 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < 4; i++)
         {
-            if (cursorObj == blockData[i].obj)
+            if (cursorObj == blockDataArr[i].obj)
             {
-                if (blockData[i].isOnCharacter)
+                if (blockDataArr[i].isOnCharacter)
                 {
                     return;
                 }

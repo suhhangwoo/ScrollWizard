@@ -23,7 +23,7 @@ MonoBehaviour:
   m_size: 1
   m_chapter: 1
   m_sprite:
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 17608ba80c9aba843a55860f55ffe712, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
