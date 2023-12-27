@@ -177,6 +177,41 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5cd0a49e12189ca4e98331c8924c85a0
+    m_Address: Assets/GameData/CharacterPositionData/Chapter1/CH1_0001_Test.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8dbdaa5ed7d934641b2d3af14a0095cc
+    m_Address: Assets/GameData/CharacterPositionData/Chapter2/CH2_0001_Test.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9ea06a727452ca34badbee2d15913dbb
+    m_Address: Assets/GameData/CharacterPositionData/Chapter1/CH1_0002_Test.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ca808e943b38e5d4ab4c5c2e1064dbe1
+    m_Address: Assets/GameData/CharacterPositionData/Chapter2/CH2_0002_Test.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5160727d76ad12b40b3a8756eb446275
+    m_Address: Assets/GameData/CharacterPositionData/Chapter3/CH3_0001_Test.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d76d4a61ce31e29479b21c657082d541
+    m_Address: Assets/GameData/CharacterPositionData/Chapter3/CH3_0002_Test.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3fcf80da8d152164bb54aa7635d9148d
+    m_Address: Assets/GameData/CharacterPositionData/Chapter3/CH3_0003_Test.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a8918457542652348951fec6804f5a1b, type: 2}
   m_SchemaSet:

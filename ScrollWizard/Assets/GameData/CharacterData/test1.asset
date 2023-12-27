@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_code: test1
   m_name: test1
-  m_target: 0
-  m_hp: 
-  m_spd: 0
-  m_def: 0
-  m_avd: 0
-  m_cri: 0
+  m_target: 1
+  m_hp: 50
+  m_spd: 2
+  m_def: 2
+  m_avd: 3
+  m_cri: 3
   m_size: 1
   m_chapter: 
   m_sprite:

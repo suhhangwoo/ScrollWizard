@@ -9,14 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c81565f15356348a721d51382ba887, type: 3}
-  m_Name: test1
+  m_Script: {fileID: 11500000, guid: d023feea1e65e364c83d08a712f02155, type: 3}
+  m_Name: CH3_0001_Test
   m_EditorClassIdentifier: 
-  m_code: test1
-  m_name: test1
-  m_accuracy: 50
-  m_property: 1
-  m_damage: 
-  m_range: 0000000000000000
-  m_count: 55
-  m_keywordList: []
+  m_code: CH3_0001_Test
+  m_characterCode:
+  - 1
+  - 2
+  - test1
+  - 4
+  m_probability: 3

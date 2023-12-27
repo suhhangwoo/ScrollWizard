@@ -12,7 +12,9 @@ public static class FileHandler
 	public static void CreateSO(string createPath, string fileName, ScriptableObject scriptableObject)
 	{
 		// 생성될 에셋의 경로
-		string path = $"Assets/GameData/{createPath}/{fileName}.asset";
+		string directoryPath = $"Assets/GameData/{createPath}";
+		Directory.CreateDirectory(directoryPath); //폴더가 없으면 생성
+		string path = $"{directoryPath}/{fileName}.asset";
 		Debug.Log(path);
 
 		// 주어진 경로가 올바르고 .asset 확장자를 갖는지 확인
