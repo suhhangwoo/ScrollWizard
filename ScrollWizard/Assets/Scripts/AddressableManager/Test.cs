@@ -12,6 +12,7 @@ public class Test : MonoBehaviour
 	private void TestFunc(ScriptableObject obj)
     {
 		CharacterPositionData data = obj as CharacterPositionData;
+
         for(int i = 0; i < data.CharacterCode.Length; i++) 
         {
             Debug.Log(data.CharacterCode[i]);

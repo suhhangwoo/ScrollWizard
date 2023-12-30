@@ -88,7 +88,7 @@ public class Character : MonoBehaviour
     {
         // DB에서 값 찾아 저장
         this.code = code;
-        CharacterData characterData = DataManager.instance.GetCharacterData(code);
+        /*CharacterData characterData = DataManager.instance.GetCharacterData(code);
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = characterData.Sprite[(int)SpriteKind.IDLE];
 
@@ -100,7 +100,7 @@ public class Character : MonoBehaviour
         for (int i = 0; i < sk.Length; i++)
         {
             skills.Add(sk[i]);
-        }
+        }*/
 
         if (code == "Player")
         {
