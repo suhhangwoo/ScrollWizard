@@ -7,6 +7,8 @@ public class BlockInfo : MonoBehaviour
     public GameObject linkedObj;
     public Character character;
     public SpriteRenderer spriteRenderer;
+    [SerializeField]
+    private int priority;
 
     private void Awake()
     {
@@ -19,6 +21,7 @@ public class BlockInfo : MonoBehaviour
         linkedObj = Instantiate(obj);
         linkedObj.transform.position = transform.position;
         character = linkedObj.GetComponent<Character>();
+        character.SetPriority(priority);
         spriteRenderer = linkedObj.GetComponent<SpriteRenderer>();
     }
 }
