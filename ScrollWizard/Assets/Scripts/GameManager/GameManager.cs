@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
     public string activeSkillcode; // 버튼을 누른 스킬의 코드값
     public int summonSkillCount; // 사용하지 않은 소환수 스킬의 개수
 
+    public enum SpriteKind { IDLE, SINGLE, MULTI, BUFF, SUMMON, MOVE, HIT }
     public enum BattleState { START, PLAYER, SUMMON, ENEMY, WIN, LOSE }
     public BattleState state;
 
@@ -73,11 +74,12 @@ public class GameManager : MonoBehaviour
             blockDataArr[i].Init(blockObj[i]);
 
         PlayerPrefs.SetInt("pos", 0);
+        PlayerPrefs.SetInt("chapter", 1);
         PlayerPrefs.SetString("skill code", "FI_0001/IC_0001/NA_0001");
         PlayerPrefs.SetString("skill count", "10/10/10");
 
         string[] tmpStr = PlayerPrefs.GetString("skill code").Split('/');
-        int[] tmpInt = ConvertIntArray(PlayerPrefs.GetString("skill count"), '/');
+        int[] tmpInt = DataManager.instance.ConvertIntArray(PlayerPrefs.GetString("skill count"), '/');
 
         for (int i = 0; i < tmpStr.Length; i++)
         {
@@ -248,7 +250,7 @@ public class GameManager : MonoBehaviour
         //NextTurn();
     }
 
-    private void MakeCharacter(GameObject obj, string code)
+    private void MakeCharacter(GameObject obj, string code) // obj 위치에 캐릭터 생성
     {
         for (int i = 0; i < 4; i++)
         {
@@ -288,18 +290,28 @@ public class GameManager : MonoBehaviour
         cloneObj.transform.position = cursorObj.transform.position;
     }
 
-    public Sprite ally;
-    public Sprite enemy;
-    public Sprite player;
-
     private void CreateClone()
     {
+        // clone 생성해서 반투명하게
         cloneObj = Instantiate(characterPrefab);
         Character character = cloneObj.GetComponent<Character>();
         character.Translucence();
-        SpriteRenderer spriteRenderer = cloneObj.GetComponent<SpriteRenderer>();
+
+        // 소환수 스킬에서 무슨 소환수인지 얻어내기
+        SkillData skillData = DataManager.instance.GetSkillData(activeSkillcode);
+        CharacterData characterData = null;
+
+        for (int i = 0; i < skillData.KeywordList.Count; i++)
+        {
+            if (skillData.KeywordList[i].Contains("소환"))
+            {
+                characterData = DataManager.instance.GetCharacterData(skillData.KeywordList[i].Replace("소환", string.Empty));
+            }
+        }
+
         // 소환수 스프라이트 넣기
-        spriteRenderer.sprite = ally;
+        SpriteRenderer spriteRenderer = cloneObj.GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = characterData.Sprite[(int)SpriteKind.IDLE];
         cloneObj.SetActive(false);
     }
 
@@ -318,17 +330,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public SkillData GetSkillData(string code)
-    {
-        SkillData skill = FileHandler.LoadSO<SkillData>("SkillData", code);
-        return skill;
-    }
-
-    public CharacterData GetCharacterData(string code)
-    {
-        CharacterData character = FileHandler.LoadSO<CharacterData>("CharacterData", code);
-        return character;
-    }
+    
 
     private bool isObjClick()
     {
@@ -354,21 +356,5 @@ public class GameManager : MonoBehaviour
         {
             cursorObj = null;
         }
-    }
-
-    private int[] ConvertIntArray(string input, char op)
-    {
-        string[] parts = input.Split(op);
-        int[] numbers = new int[parts.Length];
-
-        for (int i = 0; i < parts.Length; i++)
-        {
-            if (int.TryParse(parts[i], out int number))
-            {
-                numbers[i] = number;
-            }
-        }
-
-        return numbers;
     }
 }

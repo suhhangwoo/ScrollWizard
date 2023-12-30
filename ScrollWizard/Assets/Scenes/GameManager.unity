@@ -300,6 +300,7 @@ MonoBehaviour:
   linkedObj: {fileID: 0}
   character: {fileID: 0}
   spriteRenderer: {fileID: 0}
+  priority: 7
 --- !u!1 &206870507
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,6 +394,7 @@ MonoBehaviour:
   linkedObj: {fileID: 0}
   character: {fileID: 0}
   spriteRenderer: {fileID: 0}
+  priority: 4
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,6 +758,7 @@ MonoBehaviour:
   linkedObj: {fileID: 0}
   character: {fileID: 0}
   spriteRenderer: {fileID: 0}
+  priority: 6
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -931,6 +934,7 @@ MonoBehaviour:
   linkedObj: {fileID: 0}
   character: {fileID: 0}
   spriteRenderer: {fileID: 0}
+  priority: 3
 --- !u!1 &1179898565
 GameObject:
   m_ObjectHideFlags: 0
@@ -1157,6 +1161,7 @@ MonoBehaviour:
   linkedObj: {fileID: 0}
   character: {fileID: 0}
   spriteRenderer: {fileID: 0}
+  priority: 8
 --- !u!1 &1482569621
 GameObject:
   m_ObjectHideFlags: 0
@@ -1421,6 +1426,7 @@ MonoBehaviour:
   linkedObj: {fileID: 0}
   character: {fileID: 0}
   spriteRenderer: {fileID: 0}
+  priority: 1
 --- !u!1 &1783361807
 GameObject:
   m_ObjectHideFlags: 0
@@ -1469,9 +1475,6 @@ MonoBehaviour:
   activeSkillcode: 
   summonSkillCount: 0
   state: 0
-  ally: {fileID: 21300000, guid: 91f433160cd5e2f41943b3b475ffacb3, type: 3}
-  enemy: {fileID: 21300000, guid: 17608ba80c9aba843a55860f55ffe712, type: 3}
-  player: {fileID: 21300000, guid: 011aa4125844ed441bcb34a9fa54d24e, type: 3}
 --- !u!4 &1783361809
 Transform:
   m_ObjectHideFlags: 0
@@ -1659,6 +1662,7 @@ MonoBehaviour:
   linkedObj: {fileID: 0}
   character: {fileID: 0}
   spriteRenderer: {fileID: 0}
+  priority: 5
 --- !u!1 &2128735551
 GameObject:
   m_ObjectHideFlags: 0
@@ -1831,6 +1835,7 @@ MonoBehaviour:
   linkedObj: {fileID: 0}
   character: {fileID: 0}
   spriteRenderer: {fileID: 0}
+  priority: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
