@@ -300,6 +300,7 @@ MonoBehaviour:
   linkedObj: {fileID: 0}
   character: {fileID: 0}
   spriteRenderer: {fileID: 0}
+  index: 4
   priority: 7
 --- !u!1 &206870507
 GameObject:
@@ -394,6 +395,7 @@ MonoBehaviour:
   linkedObj: {fileID: 0}
   character: {fileID: 0}
   spriteRenderer: {fileID: 0}
+  index: 1
   priority: 4
 --- !u!1 &519420028
 GameObject:
@@ -758,6 +760,7 @@ MonoBehaviour:
   linkedObj: {fileID: 0}
   character: {fileID: 0}
   spriteRenderer: {fileID: 0}
+  index: 2
   priority: 6
 --- !u!1 &619394800
 GameObject:
@@ -934,6 +937,7 @@ MonoBehaviour:
   linkedObj: {fileID: 0}
   character: {fileID: 0}
   spriteRenderer: {fileID: 0}
+  index: 6
   priority: 3
 --- !u!1 &1179898565
 GameObject:
@@ -1161,6 +1165,7 @@ MonoBehaviour:
   linkedObj: {fileID: 0}
   character: {fileID: 0}
   spriteRenderer: {fileID: 0}
+  index: 3
   priority: 8
 --- !u!1 &1482569621
 GameObject:
@@ -1426,6 +1431,7 @@ MonoBehaviour:
   linkedObj: {fileID: 0}
   character: {fileID: 0}
   spriteRenderer: {fileID: 0}
+  index: 7
   priority: 1
 --- !u!1 &1783361807
 GameObject:
@@ -1437,6 +1443,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1783361809}
   - component: {fileID: 1783361808}
+  - component: {fileID: 1783361810}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1458,9 +1465,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursorObj: {fileID: 0}
   selectObj: {fileID: 0}
-  cloneObj: {fileID: 0}
   characterPrefab: {fileID: 688383995352735562, guid: f338e86ab862ad940895a692f487654c, type: 3}
-  bigCharacterPrefab: {fileID: 1689753550076638526, guid: 16958680e5db5da49b167cc6915e9c72, type: 3}
   turnList: []
   blockObj:
   - {fileID: 688383995293770644}
@@ -1490,6 +1495,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1783361810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783361807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d43d3dde4b6fd3a4aa16929f0d1ff903, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2031192405
 GameObject:
   m_ObjectHideFlags: 0
@@ -1662,6 +1679,7 @@ MonoBehaviour:
   linkedObj: {fileID: 0}
   character: {fileID: 0}
   spriteRenderer: {fileID: 0}
+  index: 5
   priority: 5
 --- !u!1 &2128735551
 GameObject:
@@ -1835,6 +1853,7 @@ MonoBehaviour:
   linkedObj: {fileID: 0}
   character: {fileID: 0}
   spriteRenderer: {fileID: 0}
+  index: 0
   priority: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

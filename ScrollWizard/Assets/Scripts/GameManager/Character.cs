@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using static GameManager;
 
@@ -84,28 +85,31 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void Init(string code)
+    public void Init(CharacterData characterData)
     {
         // DB에서 값 찾아 저장
-        this.code = code;
-        /*CharacterData characterData = DataManager.instance.GetCharacterData(code);
+        code = characterData.Code;
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = characterData.Sprite[(int)SpriteKind.IDLE];
 
-        int[] hp = DataManager.instance.ConvertIntArray(characterData.Hp, '/');
-        startData.Init(hp[PlayerPrefs.GetInt("chapter")], characterData.Def, characterData.Spd, characterData.Avd, characterData.Cri);
+        int[] hp = DataManager.Instance.ConvertIntArray(characterData.Hp, '/');
+        startData.Init(hp[PlayerPrefs.GetInt("chapter") - 1], characterData.Def, characterData.Spd, characterData.Avd, characterData.Cri);
         curData.CopyData(startData);
         string[] sk = characterData.Skill.Split('/');
 
         for (int i = 0; i < sk.Length; i++)
         {
             skills.Add(sk[i]);
-        }*/
+        }
 
-        if (code == "Player")
+        if (code.Equals("Player"))
         {
             // 플레이어 스탯 추가 저장 (아이템, PlayerPref 정보 등)
             priority = 9;
+        }
+        else if (code.Contains("SU"))
+        {
+            // 소환수만의 스탯 저장
         }
     }
 

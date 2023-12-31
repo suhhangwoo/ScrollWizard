@@ -197,6 +197,41 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4a9296a1f3342d144a88460d95384590
+    m_Address: Assets/GameData/SkillData/NO_0022.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3d6ee93b7603f144aa028e5fd058d1eb
+    m_Address: Assets/GameData/SkillData/NO_0023.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1b61b8fa03463004f8537eba49b5946d
+    m_Address: Assets/GameData/SkillData/IC_0002.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9f2b9d75038a95d44abd082f786561e9
+    m_Address: Assets/GameData/SkillData/SU_0001.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1a8b89a101e86d94fb0fb523cf28a90f
+    m_Address: Assets/GameData/SkillData/SU_0002.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 375017ef0ec12a24bbbc520b7715b282
+    m_Address: Assets/GameData/CharacterData/S1_0001.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5fd1efbba14f302449f50cfda56692b0
+    m_Address: Assets/GameData/CharacterData/S2_0001.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a8918457542652348951fec6804f5a1b, type: 2}
   m_SchemaSet:

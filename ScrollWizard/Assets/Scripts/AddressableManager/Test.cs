@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
-
     private Action<ScriptableObject> action;
 
 	private void TestFunc(ScriptableObject obj)
@@ -24,11 +23,6 @@ public class Test : MonoBehaviour
         action = TestFunc;
 
 		AddressableManager.Instance.Initialize();
-        AddressableManager.Instance.LoadAddressableAsset("CharacterPositionData/Chapter1/CH1_0001_Test", action);
+        //AddressableManager.Instance.LoadAddressableAsset("CharacterPositionData/Chapter1/CH1_0001_Test", action);
 	}
-
-    void Update()
-    {
-        
-    }
 }
