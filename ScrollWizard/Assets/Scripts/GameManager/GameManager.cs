@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.U2D.Animation;
 using UnityEngine;
-using UnityEngine.UI;
 using static Unity.Collections.AllocatorManager;
 
 public struct BlockData
@@ -61,7 +60,7 @@ public class GameManager : Singleton<GameManager>
     {
         cursorObj = null;
         activeSkillcode = string.Empty;
-        summonSkillCount = 5;
+        summonSkillCount = 0;
 
         turnList = new List<Character>();
         skillInfoArr = new SkillInfo[6];
@@ -75,8 +74,8 @@ public class GameManager : Singleton<GameManager>
 
         PlayerPrefs.SetInt("pos", 2);
         PlayerPrefs.SetInt("chapter", 1);
-        PlayerPrefs.SetString("skill code", "FI_0001/IC_0001/NA_0001");
-        PlayerPrefs.SetString("skill count", "10/10/10");
+        PlayerPrefs.SetString("skill code", "SU_0001/SU_0002/FI_0001/IC_0001/NA_0001/NO_0001");
+        PlayerPrefs.SetString("skill count", "10/10/10/10/10/10");
 
         string[] tmpStr = PlayerPrefs.GetString("skill code").Split('/');
         int[] tmpInt = DataManager.Instance.ConvertIntArray(PlayerPrefs.GetString("skill count"), '/');
@@ -133,7 +132,7 @@ public class GameManager : Singleton<GameManager>
 
     }
 
-    private void NextTurn()
+    public void NextTurn()
     {
         if (turnList[0].code.Equals("Player"))
         {
@@ -221,29 +220,10 @@ public class GameManager : Singleton<GameManager>
         }
 
         selectObj = null;
-        activeSkillcode = null;
+        activeSkillcode = string.Empty;
         summonSkillCount--;
 
         // 2칸 소환수 소환했다면 다른 2칸 소환수 버튼 비활성화
-    }
-
-    public void PushSkillButton()
-    {
-        activeSkillcode = "SU_0002";
-
-        if (activeSkillcode.Contains("SU"))
-            StartCoroutine(CloneManager.Instance.CreateClone());
-    }
-
-    public void PushNextTurnButton()
-    {
-        if (state == BattleState.START)
-        {
-            summonSkillCount = 0;
-            return;
-        }
-
-        NextTurn();
     }
 
     private int AllyFieldCount()
@@ -302,7 +282,7 @@ public class GameManager : Singleton<GameManager>
 
         if (characterData.Size == 2)
         {
-            if (idx == 3 || idx == 7)
+            if (idx == 3 || idx == 7 || blockDataArr[idx + 1].isOnCharacter)
             {
                 blockInfo.CreateCharacter(characterPrefab, blockDataArr[idx - 1].obj);
                 blockDataArr[idx - 1].isOnCharacter = true;

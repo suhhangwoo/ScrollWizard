@@ -1,0 +1,175 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: SkillData
+  m_EditorClassIdentifier: 
+  m_GroupName: SkillData
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 9ae32936c54e1154b81af658c35759f9
+  m_SerializeEntries:
+  - m_GUID: ae61df3247f38864bb634047aebfd30e
+    m_Address: Assets/GameData/SkillData/FI_0001.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ca2f92bd512f9024a9d3d56b16004920
+    m_Address: Assets/GameData/SkillData/FI_0002.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9076a5215ecf00f42ac604a07551987d
+    m_Address: Assets/GameData/SkillData/IC_0001.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1b61b8fa03463004f8537eba49b5946d
+    m_Address: Assets/GameData/SkillData/IC_0002.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 228d7425af3918b408519d8f66fb4c0f
+    m_Address: Assets/GameData/SkillData/NA_0001.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c3207e55116f0f74c815a8c122ba7276
+    m_Address: Assets/GameData/SkillData/NO_0001.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 30297883a30dc0b45a1bc4571da15310
+    m_Address: Assets/GameData/SkillData/NO_0002.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5831ed41e0c2af34c9c9f9bffdee5178
+    m_Address: Assets/GameData/SkillData/NO_0003.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ffa96923398a34742b402ac2262066ca
+    m_Address: Assets/GameData/SkillData/NO_0004.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 53b9d1e28fe444c489e4b7e779c5e950
+    m_Address: Assets/GameData/SkillData/NO_0005.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7c52d541dd03ddc4c952266a7e0debfe
+    m_Address: Assets/GameData/SkillData/NO_0006.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 13c810a1c75fb6d4ca7ea2ad73c3bb8b
+    m_Address: Assets/GameData/SkillData/NO_0007.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1c633a20900b72b45852021070c3c1d2
+    m_Address: Assets/GameData/SkillData/NO_0008.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8453c4bf21ab2ab43b201cb0f0e83d8d
+    m_Address: Assets/GameData/SkillData/NO_0009.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a54a5a38ba7dbde40934ed77d1350409
+    m_Address: Assets/GameData/SkillData/NO_0010.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bb95a08071ed28742a8b6c8a9b5c7961
+    m_Address: Assets/GameData/SkillData/NO_0011.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f550cbec0df59c844ab57c8945178515
+    m_Address: Assets/GameData/SkillData/NO_0012.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5b959f6c395c3714c88ff5f47d5b8d84
+    m_Address: Assets/GameData/SkillData/NO_0013.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c144c498e9e41f84587a53b69db576f7
+    m_Address: Assets/GameData/SkillData/NO_0014.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3b2ad858339e20c4abb53dfcbaed5caf
+    m_Address: Assets/GameData/SkillData/NO_0015.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c058a55fbc979aa4ba52a489f255d641
+    m_Address: Assets/GameData/SkillData/NO_0016.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 918a2754c4ea47c44b0e779ca1023d26
+    m_Address: Assets/GameData/SkillData/NO_0017.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 35705491bec97ae4f87a4a58e95f582a
+    m_Address: Assets/GameData/SkillData/NO_0018.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 89be7151ef011bb439ce2a172b90e930
+    m_Address: Assets/GameData/SkillData/NO_0019.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9a7f374396ca0864588c48c860f41380
+    m_Address: Assets/GameData/SkillData/NO_0020.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7ae0ef955d75a2f49a14578a59a7f268
+    m_Address: Assets/GameData/SkillData/NO_0021.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4a9296a1f3342d144a88460d95384590
+    m_Address: Assets/GameData/SkillData/NO_0022.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3d6ee93b7603f144aa028e5fd058d1eb
+    m_Address: Assets/GameData/SkillData/NO_0023.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9f2b9d75038a95d44abd082f786561e9
+    m_Address: Assets/GameData/SkillData/SU_0001.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1a8b89a101e86d94fb0fb523cf28a90f
+    m_Address: Assets/GameData/SkillData/SU_0002.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: a8918457542652348951fec6804f5a1b, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 87a7047801a83b248bc99fc05d064478, type: 2}
+    - {fileID: 11400000, guid: d019dca5523b5c643ba15cc16717d7e8, type: 2}

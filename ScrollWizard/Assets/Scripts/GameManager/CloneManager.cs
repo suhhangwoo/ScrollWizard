@@ -38,6 +38,12 @@ public class CloneManager : Singleton<CloneManager>
 
             if (GameManager.Instance.isObjClick())
                 GameManager.Instance.CreateSummon(summonCode);
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                GameManager.Instance.activeSkillcode = string.Empty;
+                ResetCloneArr();
+            }
         }
     }
 
@@ -114,7 +120,7 @@ public class CloneManager : Singleton<CloneManager>
 
             if (cloneArr[0].isBig)
             {
-                if (idx == 3)
+                if (idx == 3 || GameManager.Instance.blockDataArr[idx + 1].isOnCharacter)
                 {
                     if (GameManager.Instance.blockDataArr[idx - 1].isOnCharacter)
                         return;
@@ -230,7 +236,7 @@ public class CloneManager : Singleton<CloneManager>
 
             if (flag)
             {
-                if (!cloneArr[i].obj.activeSelf)
+                if (!cloneArr[i].obj.activeSelf && cloneArr[i].obj.transform.position.x != 0)
                     cloneArr[i].obj.SetActive(true);
             }
             else

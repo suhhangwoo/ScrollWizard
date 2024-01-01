@@ -15,6 +15,16 @@ public struct ChangeEffect
         this.name = name;
         this.turn = turn;
     }
+
+    public bool UpdateEffect()
+    {
+        turn--;
+
+        if (turn == 0)
+            return true;
+
+        return false;
+    }
 }
 
 public struct Data
@@ -110,6 +120,23 @@ public class Character : MonoBehaviour
         else if (code.Contains("SU"))
         {
             // 소환수만의 스탯 저장
+        }
+    }
+
+    public void UpdateState()
+    {
+        for (int i = 0; i < state.Count; i++)
+        {
+            if (state[i].name.Contains("중독"))
+            {
+                TakeDamage(int.Parse(state[i].name.Replace("중독", string.Empty)));
+            }
+
+            if (state[i].UpdateEffect())
+            {
+                state.Remove(state[i]);
+                i--;
+            }
         }
     }
 
