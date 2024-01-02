@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEditor.AddressableAssets;
 using UnityEngine.AddressableAssets;
 using UnityEditor.AddressableAssets.Settings;
+using UnityEditor.AddressableAssets.Settings.GroupSchemas;
 
 public static class FileHandler
 {
@@ -22,8 +23,27 @@ public static class FileHandler
 		{
 			UnityEditor.AssetDatabase.CreateAsset(scriptableObject, path); // 에셋을 생성하고 등록
 			AddressableAssetSettings settings = AddressableAssetSettingsDefaultObject.Settings;
-			string guid = AssetDatabase.AssetPathToGUID(path); // 생성된 에셋의 GUID 획득
-			AddressableAssetEntry assetEntry = settings.CreateOrMoveEntry(guid, settings.DefaultGroup); // Addressable로 에셋 등록
+            string guid = AssetDatabase.AssetPathToGUID(path); // 생성된 에셋의 GUID 획득
+			AddressableAssetEntry assetEntry = null;
+
+            if (createPath != "SkillData" && createPath != "CharacterData")
+			{
+				settings = AddressableAssetSettingsDefaultObject.Settings;
+                string group = "PositionData_Ch" + createPath[createPath.Length - 1];
+				AddressableAssetGroup assetGroup = settings.FindGroup(group);
+
+                if (assetGroup == null)
+				{
+                    assetGroup = settings.CreateGroup(group, false, false, false, null, typeof(BundledAssetGroupSchema));
+                }
+
+				assetEntry = settings.CreateOrMoveEntry(guid, assetGroup);
+			}
+			else
+			{
+				assetEntry = settings.CreateOrMoveEntry(guid, settings.DefaultGroup); // Addressable로 에셋 등록
+			}
+
 			assetEntry.SetAddress(path); // 에셋 주소 설정
 			UnityEditor.EditorUtility.SetDirty(scriptableObject);   // 에디터에게 해당 에셋이 변경되었다고 알림
 			UnityEditor.AssetDatabase.SaveAssets(); // 에셋 데이터 저장

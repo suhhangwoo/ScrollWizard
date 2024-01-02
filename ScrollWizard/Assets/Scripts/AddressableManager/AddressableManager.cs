@@ -29,6 +29,21 @@ public class AddressableManager : Singleton<AddressableManager>
 
         await handle.Task;
 
-		DataManager.Instance.Obj = handle.Result;
-	}
+		DataManager.Instance.obj = handle.Result;
+        Addressables.Release(handle);
+    }
+
+    public async void LoadGroupAsset(string name)
+	{
+        AsyncOperationHandle<IList<ScriptableObject>> handle = Addressables.LoadAssetsAsync<ScriptableObject>(name, null, Addressables.MergeMode.Union);
+        
+		await handle.Task;
+
+        foreach (ScriptableObject go in handle.Result)
+        {
+            DataManager.Instance.objGroup.Add(go);
+        }
+
+        Addressables.Release(handle);
+    }
 }

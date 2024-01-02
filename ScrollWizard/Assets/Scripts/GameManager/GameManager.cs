@@ -276,7 +276,7 @@ public class GameManager : Singleton<GameManager>
 
         yield return new WaitUntil(() => isAssetNull());
 
-        CharacterData characterData = DataManager.Instance.Obj as CharacterData;
+        CharacterData characterData = DataManager.Instance.obj as CharacterData;
         BlockInfo blockInfo = block.GetComponent<BlockInfo>();
         int idx = blockInfo.index;
 
@@ -302,7 +302,7 @@ public class GameManager : Singleton<GameManager>
         characterObj.Add(blockInfo.linkedObj);
         blockInfo.character.Init(characterData);
 
-        DataManager.Instance.Obj = null;
+        DataManager.Instance.obj = null;
     }
 
     private IEnumerator MakeCharacter(List<GameObject> blockList, string code)
@@ -311,7 +311,7 @@ public class GameManager : Singleton<GameManager>
 
         yield return new WaitUntil(() => isAssetNull());
 
-        CharacterData characterData = DataManager.Instance.Obj as CharacterData;
+        CharacterData characterData = DataManager.Instance.obj as CharacterData;
 
         BlockInfo blockInfo = null;
         int idx = 0;
@@ -344,7 +344,7 @@ public class GameManager : Singleton<GameManager>
             blockInfo.character.Init(characterData);
         }        
 
-        DataManager.Instance.Obj = null;
+        DataManager.Instance.obj = null;
     }
 
     private void PlayerTurn()
@@ -375,7 +375,7 @@ public class GameManager : Singleton<GameManager>
 
     public bool isAssetNull()
     {
-        return DataManager.Instance.Obj != null;
+        return DataManager.Instance.obj != null;
     }
 
     public bool isObjClick()

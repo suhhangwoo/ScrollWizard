@@ -154,7 +154,7 @@ public class CloneManager : Singleton<CloneManager>
 
         yield return new WaitUntil(() => GameManager.Instance.isAssetNull());
 
-        SkillData skillData = DataManager.Instance.Obj as SkillData;
+        SkillData skillData = DataManager.Instance.obj as SkillData;
         string num = string.Empty;
 
         for (int i = 0; i < skillData.KeywordList.Count; i++)
@@ -179,13 +179,13 @@ public class CloneManager : Singleton<CloneManager>
             }
         }
 
-        DataManager.Instance.Obj = null;
+        DataManager.Instance.obj = null;
 
         DataManager.Instance.LoadCharacterData(summonCode);
 
         yield return new WaitUntil(() => GameManager.Instance.isAssetNull());
 
-        CharacterData characterData = DataManager.Instance.Obj as CharacterData;
+        CharacterData characterData = DataManager.Instance.obj as CharacterData;
 
         if (characterData.Size == 2)
             cloneArr[0].isBig = true;
@@ -203,7 +203,7 @@ public class CloneManager : Singleton<CloneManager>
             cloneArr[i].obj.SetActive(false);
         }
 
-        DataManager.Instance.Obj = null;
+        DataManager.Instance.obj = null;
     }
 
     /// <summary>

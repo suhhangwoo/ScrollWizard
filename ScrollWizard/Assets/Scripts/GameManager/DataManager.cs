@@ -11,12 +11,13 @@ using static UnityEngine.Rendering.VirtualTexturing.Debugging;
 
 public class DataManager : Singleton<DataManager>
 {
-    private ScriptableObject obj;
-    public ScriptableObject Obj { get { return obj; } set { obj = value; } }
+    public ScriptableObject obj;
+    public List<ScriptableObject> objGroup;
 
     private void Start()
     {
         AddressableManager.Instance.Initialize();
+        objGroup = new List<ScriptableObject>();
     }
 
     public void LoadSkillData(string code)

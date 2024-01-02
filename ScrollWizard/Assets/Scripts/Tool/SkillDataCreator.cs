@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SkillDataCreator : EditorWindow
 {
-	private  SkillData skillData;
+	private SkillData skillData;
 	private static int keywordCnt = 0;
 	private static string[] keywordArr = new string[10];
 	[MenuItem("Window/SkillDataCreator")]
