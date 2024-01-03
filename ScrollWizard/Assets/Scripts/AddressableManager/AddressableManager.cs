@@ -8,6 +8,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 public class AddressableManager : Singleton<AddressableManager>
 {
 	private static readonly string defaultAddress = "Assets/GameData/"; //에셋들의 기본 주소
+    private string[] groupName = { "PositionData_Ch1", "PositionData_Ch2", "PositionData_Ch3" };
 
 	//기본 초기화
 	public void Initialize() 
@@ -16,8 +17,6 @@ public class AddressableManager : Singleton<AddressableManager>
 	}
 
 	//어드레서블 에셋을 로드하는 함수
-	//어드레서블 주소와 대리자를 입력하면 해당 주소의 에셋을 로드한 후 대리자를 콜백으로 실행한다.
-	//사용 예시)  AddressableManager.Instance.LoadAddressableAsset("SkillData/FI_0001", action);
 	public async void LoadAddressableAsset(string address)
 	{
         StringBuilder sb = new StringBuilder();
@@ -33,9 +32,9 @@ public class AddressableManager : Singleton<AddressableManager>
         Addressables.Release(handle);
     }
 
-    public async void LoadGroupAsset(string name)
+    public async void LoadGroupAsset(int chapter)
 	{
-        AsyncOperationHandle<IList<ScriptableObject>> handle = Addressables.LoadAssetsAsync<ScriptableObject>(name, null, Addressables.MergeMode.Union);
+        AsyncOperationHandle<IList<ScriptableObject>> handle = Addressables.LoadAssetsAsync<ScriptableObject>(groupName[chapter - 1], null, Addressables.MergeMode.Union);
         
 		await handle.Task;
 
