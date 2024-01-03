@@ -23,12 +23,12 @@ MonoBehaviour:
   m_size: 1
   m_chapter: 1
   m_sprite:
+  - {fileID: 21300000, guid: 17608ba80c9aba843a55860f55ffe712, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  m_skill: "\uC751\uAE09\uCC98\uCE58/\uD658\uAC01 \uAC00\uC2A4/\uC57D\uBCD1 \uD22C\uCC99"
+  m_skill: NO_0021/NO_0010
   m_property: 

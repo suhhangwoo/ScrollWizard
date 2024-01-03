@@ -1,26 +1,52 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using static UnityEditor.PlayerSettings;
+using static UnityEngine.Rendering.VirtualTexturing.Debugging;
 
-public class DataManager : MonoBehaviour
+public class DataManager : Singleton<DataManager>
 {
-    public static DataManager instance;
+    public ScriptableObject obj;
+    public List<ScriptableObject> objGroup;
 
-    private void Awake()
+    private void Start()
     {
-        instance = this;
+        AddressableManager.Instance.Initialize();
+        objGroup = new List<ScriptableObject>();
     }
 
-    public SkillData GetSkillData(string code)
+    public void LoadSkillData(string code)
     {
-        SkillData skill = FileHandler.LoadSO<SkillData>("SkillData", code);
-        return skill;
+        StringBuilder sb = new StringBuilder();
+        sb.Append("SkillData/");
+        sb.Append(code);
+
+        AddressableManager.Instance.LoadAddressableAsset(sb.ToString());
     }
 
-    public CharacterData GetCharacterData(string code)
+    public void LoadCharacterData(string code)
     {
-        CharacterData character = FileHandler.LoadSO<CharacterData>("CharacterData", code);
-        return character;
+        StringBuilder sb = new StringBuilder();
+        sb.Append("CharacterData/");
+        sb.Append(code);
+
+        AddressableManager.Instance.LoadAddressableAsset(sb.ToString());
+    }
+
+    public void LoadCharacterPositionData(int chapter, string code)
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.Append("CharacterPositionData/Chapter");
+        sb.Append(chapter.ToString());
+        sb.Append("/");
+        sb.Append(code);
+
+        AddressableManager.Instance.LoadAddressableAsset(sb.ToString());
     }
 
     public int[] ConvertIntArray(string input, char op)

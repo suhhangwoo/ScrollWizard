@@ -9,13 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d023feea1e65e364c83d08a712f02155, type: 3}
-  m_Name: CH3_0002_Test
+  m_Script: {fileID: 11500000, guid: 5834b5087d578d24c926ce20cd31e6d6, type: 3}
+  m_Name: PositionData_Ch1_ContentUpdateGroupSchema
   m_EditorClassIdentifier: 
-  m_code: CH3_0002_Test
-  m_characterCode:
-  - 2
-  - test1
-  - 4
-  - 5
-  m_probability: 4
+  m_Group: {fileID: 11400000, guid: fec6eeb273a49434ebdeb7f2f5f1147e, type: 2}
+  m_StaticContent: 0

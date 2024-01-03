@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using static GameManager;
 
@@ -13,6 +14,16 @@ public struct ChangeEffect
     {
         this.name = name;
         this.turn = turn;
+    }
+
+    public bool UpdateEffect()
+    {
+        turn--;
+
+        if (turn == 0)
+            return true;
+
+        return false;
     }
 }
 
@@ -84,16 +95,15 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void Init(string code)
+    public void Init(CharacterData characterData)
     {
         // DB에서 값 찾아 저장
-        this.code = code;
-        CharacterData characterData = DataManager.instance.GetCharacterData(code);
+        code = characterData.Code;
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = characterData.Sprite[(int)SpriteKind.IDLE];
 
-        int[] hp = DataManager.instance.ConvertIntArray(characterData.Hp, '/');
-        startData.Init(hp[PlayerPrefs.GetInt("chapter")], characterData.Def, characterData.Spd, characterData.Avd, characterData.Cri);
+        int[] hp = DataManager.Instance.ConvertIntArray(characterData.Hp, '/');
+        startData.Init(hp[PlayerPrefs.GetInt("chapter") - 1], characterData.Def, characterData.Spd, characterData.Avd, characterData.Cri);
         curData.CopyData(startData);
         string[] sk = characterData.Skill.Split('/');
 
@@ -102,10 +112,31 @@ public class Character : MonoBehaviour
             skills.Add(sk[i]);
         }
 
-        if (code == "Player")
+        if (code.Equals("Player"))
         {
             // 플레이어 스탯 추가 저장 (아이템, PlayerPref 정보 등)
             priority = 9;
+        }
+        else if (code.Contains("SU"))
+        {
+            // 소환수만의 스탯 저장
+        }
+    }
+
+    public void UpdateState()
+    {
+        for (int i = 0; i < state.Count; i++)
+        {
+            if (state[i].name.Contains("중독"))
+            {
+                TakeDamage(int.Parse(state[i].name.Replace("중독", string.Empty)));
+            }
+
+            if (state[i].UpdateEffect())
+            {
+                state.Remove(state[i]);
+                i--;
+            }
         }
     }
 

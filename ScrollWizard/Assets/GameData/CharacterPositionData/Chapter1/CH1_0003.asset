@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d023feea1e65e364c83d08a712f02155, type: 3}
-  m_Name: CH3_0001_Test
+  m_Name: CH1_0003
   m_EditorClassIdentifier: 
-  m_code: CH3_0001_Test
+  m_code: CH1_0003
   m_characterCode:
-  - 1
-  - 2
-  - test1
-  - 4
-  m_probability: 3
+  - E1_0005
+  - E1_0006
+  - E1_0006
+  - E1_0006
+  m_probability: 10

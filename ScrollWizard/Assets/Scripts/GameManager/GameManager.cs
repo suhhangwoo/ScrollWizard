@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.U2D.Animation;
 using UnityEngine;
-using UnityEngine.UI;
+using static Unity.Collections.AllocatorManager;
 
 public struct BlockData
 {
@@ -30,16 +32,12 @@ public struct SkillInfo
     }
 }
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    public static GameManager instance;
-
     public GameObject cursorObj; // 커서 위치에 있는 오브젝트
     public GameObject selectObj; // 클릭한 오브젝트
-    public GameObject cloneObj; // 소환수가 나올 위치를 보여주는 환영 오브젝트
 
     public GameObject characterPrefab; // 적 프리팹
-    public GameObject bigCharacterPrefab; // 큰 적 프리팹
 
     public List<Character> turnList; // 진행될 턴 순서
 
@@ -58,43 +56,39 @@ public class GameManager : MonoBehaviour
     public enum BattleState { START, PLAYER, SUMMON, ENEMY, WIN, LOSE }
     public BattleState state;
 
-    private void Awake()
+    private void Start()
     {
-        instance = this;
         cursorObj = null;
-        cloneObj = null;
-        activeSkillcode = null;
-        summonSkillCount = 5;
+        activeSkillcode = string.Empty;
+        summonSkillCount = 0;
+
         turnList = new List<Character>();
         skillInfoArr = new SkillInfo[6];
         blockDataArr = new BlockData[8];
         characterObj = new List<GameObject>();
+        
+        state = BattleState.START;
 
         for (int i = 0; i < blockDataArr.Length; i++)
             blockDataArr[i].Init(blockObj[i]);
 
-        PlayerPrefs.SetInt("pos", 0);
+        PlayerPrefs.SetInt("pos", 2);
         PlayerPrefs.SetInt("chapter", 1);
-        PlayerPrefs.SetString("skill code", "FI_0001/IC_0001/NA_0001");
-        PlayerPrefs.SetString("skill count", "10/10/10");
+        PlayerPrefs.SetString("skill code", "SU_0001/SU_0002/FI_0001/IC_0001/NA_0001/NO_0001");
+        PlayerPrefs.SetString("skill count", "10/10/10/10/10/10");
 
         string[] tmpStr = PlayerPrefs.GetString("skill code").Split('/');
-        int[] tmpInt = DataManager.instance.ConvertIntArray(PlayerPrefs.GetString("skill count"), '/');
+        int[] tmpInt = DataManager.Instance.ConvertIntArray(PlayerPrefs.GetString("skill count"), '/');
 
         for (int i = 0; i < tmpStr.Length; i++)
         {
             skillInfoArr[i].Init(tmpStr[i], tmpInt[i]);
-            
+
             if (tmpStr[i][0].Equals('S'))
             {
                 summonSkillCount++;
             }
         }
-    }
-
-    private void Start()
-    {
-        state = BattleState.START;        
 
         StartCoroutine(ZeroTurn());
     }
@@ -102,14 +96,6 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         CheckCursorOn();
-
-        if (cloneObj != null)
-        {
-            MoveClone();
-
-            if (isObjClick())
-                CreateSummon("S1_0001");
-        }
     }
 
     private void TurnCalculation()
@@ -146,9 +132,9 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void NextTurn()
+    public void NextTurn()
     {
-        if (turnList[0].code.Equals("player"))
+        if (turnList[0].code.Equals("Player"))
         {
             PlayerTurn();
         }
@@ -168,48 +154,79 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void CreateSummon(string code)
+    public void CreateSummon(string code)
     {
-        Destroy(cloneObj);
-        cloneObj = null;
-        MakeCharacter(selectObj, code);
+        BlockInfo blockInfo = selectObj.GetComponent<BlockInfo>();
+        int idx = blockInfo.index;
 
-        selectObj = null;
-        activeSkillcode = null;
-        summonSkillCount--;
-    }
-
-    public void PushSkillButton()
-    {
-        activeSkillcode = "S0_0001";
-
-        if (activeSkillcode[0].Equals('S'))
-            CreateClone();
-    }
-
-    public void PushNextTurnButton()
-    {
-        if (state == BattleState.START)
+        if (blockDataArr[idx].isOnCharacter)
         {
-            summonSkillCount = 0;
+            selectObj = null;
             return;
         }
 
-        NextTurn();
+        int count = CloneManager.Instance.ResetCloneArr();
+        List<GameObject> list = new List<GameObject>();
+
+        if (count == 3)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                if (blockDataArr[i].isOnCharacter)
+                    continue;
+
+                list.Add(blockDataArr[i].obj);
+            }
+        }
+        else if (count == 2)
+        {
+            if (idx == 3)
+            {
+                for (int i = 3; i >= 0; i--)
+                {
+                    if (list.Count == count)
+                        break;
+
+                    if (blockDataArr[i].isOnCharacter)
+                        continue;
+
+                    list.Add(blockDataArr[i].obj);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    idx %= 4;
+
+                    if (list.Count == count)
+                        break;
+
+                    if (blockDataArr[idx++].isOnCharacter)
+                        continue;
+
+                    list.Add(blockDataArr[idx].obj);
+                }
+            }
+        }
+
+        if (list.Count > 1)
+        {
+            StartCoroutine(MakeCharacter(list, code));
+        }
+        else
+        {
+            StartCoroutine(MakeCharacter(selectObj, code));
+        }
+
+        selectObj = null;
+        activeSkillcode = string.Empty;
+        summonSkillCount--;
+
+        // 2칸 소환수 소환했다면 다른 2칸 소환수 버튼 비활성화
     }
 
-    private bool isEndZeroTurn()
-    {
-        if (summonSkillCount == 0) // 모든 소환수 스킬을 사용했거나 필드가 꽉 차있으면 소환 턴 종료
-            return true;
-
-        if (isAllyFieldFull())
-            return true;
-
-        return false;
-    }
-
-    private bool isAllyFieldFull()
+    private int AllyFieldCount()
     {
         int count = 0;
 
@@ -219,17 +236,14 @@ public class GameManager : MonoBehaviour
                 count++;
         }
 
-        if (count == 4)
-            return true;
-
-        return false;
+        return count;
     }
 
     private IEnumerator ZeroTurn()
     {
         // 미리 지정된 위치에 플레이어 생성
         int idx = PlayerPrefs.GetInt("pos");
-        MakeCharacter(blockObj[idx], "Player");
+        StartCoroutine(MakeCharacter(blockObj[idx], "Player"));
 
         // 소환수 스킬 사용        
         // 턴 넘기기 버튼 사용하거나 사용할 수 있는 소환수 스킬이 더 없으면 다음 턴으로
@@ -250,69 +264,87 @@ public class GameManager : MonoBehaviour
         //NextTurn();
     }
 
-    private void MakeCharacter(GameObject obj, string code) // obj 위치에 캐릭터 생성
+    /// <summary>
+    /// block 위치에 캐릭터 생성
+    /// </summary>
+    /// <param name="block">2칸 몬스터면 왼쪽 블럭 입력</param>
+    /// <param name="code">캐릭터 코드</param>
+    /// <returns></returns>
+    private IEnumerator MakeCharacter(GameObject block, string code)
     {
-        for (int i = 0; i < 4; i++)
+        DataManager.Instance.LoadCharacterData(code);
+
+        yield return new WaitUntil(() => isAssetNull());
+
+        CharacterData characterData = DataManager.Instance.obj as CharacterData;
+        BlockInfo blockInfo = block.GetComponent<BlockInfo>();
+        int idx = blockInfo.index;
+
+        if (characterData.Size == 2)
         {
-            if (obj == blockDataArr[i].obj)
+            if (idx == 3 || idx == 7 || blockDataArr[idx + 1].isOnCharacter)
             {
-                blockDataArr[i].isOnCharacter = true;
-                blockDataArr[i].info.CreateCharacter(characterPrefab);
-                characterObj.Add(blockDataArr[i].info.linkedObj);
-                blockDataArr[i].info.character.Init(code);
-                break;
+                blockInfo.CreateCharacter(characterPrefab, blockDataArr[idx - 1].obj);
+                blockDataArr[idx - 1].isOnCharacter = true;
+            }
+            else
+            {
+                blockInfo.CreateCharacter(characterPrefab, blockDataArr[idx + 1].obj);
+                blockDataArr[idx + 1].isOnCharacter = true;
             }
         }
+        else
+        {
+            blockInfo.CreateCharacter(characterPrefab);
+        }
+
+        blockDataArr[idx].isOnCharacter = true;
+        characterObj.Add(blockInfo.linkedObj);
+        blockInfo.character.Init(characterData);
+
+        DataManager.Instance.obj = null;
     }
 
-    private void MoveClone()
+    private IEnumerator MakeCharacter(List<GameObject> blockList, string code)
     {
-        if (cursorObj == null)
-            return;
+        DataManager.Instance.LoadCharacterData(code);
 
-        if (cloneObj == null)
-            return;
+        yield return new WaitUntil(() => isAssetNull());
 
-        for (int i = 0; i < 4; i++)
+        CharacterData characterData = DataManager.Instance.obj as CharacterData;
+
+        BlockInfo blockInfo = null;
+        int idx = 0;
+
+        for (int i = 0; i < blockList.Count; i++)
         {
-            if (cursorObj == blockDataArr[i].obj)
+            blockInfo = blockList[i].GetComponent<BlockInfo>();
+            idx = blockInfo.index;
+
+            if (characterData.Size == 2)
             {
-                if (blockDataArr[i].isOnCharacter)
+                if (idx == 3 || idx == 7)
                 {
-                    return;
+                    blockInfo.CreateCharacter(characterPrefab, blockDataArr[idx - 1].obj);
+                    blockDataArr[idx - 1].isOnCharacter = true;
+                }
+                else
+                {
+                    blockInfo.CreateCharacter(characterPrefab, blockDataArr[idx + 1].obj);
+                    blockDataArr[idx + 1].isOnCharacter = true;
                 }
             }
-        }
-
-        if (!cloneObj.activeSelf)
-            cloneObj.SetActive(true);
-
-        cloneObj.transform.position = cursorObj.transform.position;
-    }
-
-    private void CreateClone()
-    {
-        // clone 생성해서 반투명하게
-        cloneObj = Instantiate(characterPrefab);
-        Character character = cloneObj.GetComponent<Character>();
-        character.Translucence();
-
-        // 소환수 스킬에서 무슨 소환수인지 얻어내기
-        SkillData skillData = DataManager.instance.GetSkillData(activeSkillcode);
-        CharacterData characterData = null;
-
-        for (int i = 0; i < skillData.KeywordList.Count; i++)
-        {
-            if (skillData.KeywordList[i].Contains("소환"))
+            else
             {
-                characterData = DataManager.instance.GetCharacterData(skillData.KeywordList[i].Replace("소환", string.Empty));
+                blockInfo.CreateCharacter(characterPrefab);
             }
-        }
 
-        // 소환수 스프라이트 넣기
-        SpriteRenderer spriteRenderer = cloneObj.GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = characterData.Sprite[(int)SpriteKind.IDLE];
-        cloneObj.SetActive(false);
+            blockDataArr[idx].isOnCharacter = true;
+            characterObj.Add(blockInfo.linkedObj);
+            blockInfo.character.Init(characterData);
+        }        
+
+        DataManager.Instance.obj = null;
     }
 
     private void PlayerTurn()
@@ -330,9 +362,23 @@ public class GameManager : MonoBehaviour
 
     }
 
-    
+    public bool isEndZeroTurn()
+    {
+        if (summonSkillCount == 0) // 모든 소환수 스킬을 사용했거나 필드가 꽉 차있으면 소환 턴 종료
+            return true;
 
-    private bool isObjClick()
+        if (AllyFieldCount() == 4)
+            return true;
+
+        return false;
+    }
+
+    public bool isAssetNull()
+    {
+        return DataManager.Instance.obj != null;
+    }
+
+    public bool isObjClick()
     {
         if (Input.GetMouseButtonDown(0) && cursorObj != null)
         {
@@ -343,7 +389,7 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
-    private void CheckCursorOn()
+    public void CheckCursorOn()
     {
         Vector2 rayPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(rayPosition, Vector2.zero);

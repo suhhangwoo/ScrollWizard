@@ -10,25 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbe31be1afef36349af2f70d753b4778, type: 3}
-  m_Name: E1_0006
+  m_Name: S1_0001
   m_EditorClassIdentifier: 
-  m_code: E1_0006
-  m_name: "\uAC15\uB3C4<\uBA85\uAD81>"
-  m_target: 1
-  m_hp: 12
-  m_spd: 6
-  m_def: 0
-  m_avd: 8
-  m_cri: 10
-  m_size: 1
-  m_chapter: 1
+  m_code: S1_0001
+  m_name: "\uBB3C\uC758 \uC815\uB839"
+  m_target: 0
+  m_hp: 25
+  m_spd: 3
+  m_def: 5
+  m_avd: 0
+  m_cri: 5
+  m_size: 2
+  m_chapter: 
   m_sprite:
-  - {fileID: 21300000, guid: 17608ba80c9aba843a55860f55ffe712, type: 3}
+  - {fileID: 21300000, guid: 12bbdf52851b26143b06d90973901859, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  m_skill: NO_0018
-  m_property: 
+  m_skill: NO_0023/IC_0002
+  m_property: "\uB0C9\uAE30\uC758 \uAC00\uD638"

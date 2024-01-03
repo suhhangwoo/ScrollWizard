@@ -91,18 +91,18 @@ public class CharacterData : ScriptableObject
 
 	public void Copy(CharacterData other)
 	{
-		this.Code = other.Code;
-		this.Name = other.Name;
-		this.Target = other.Target;
-		this.Hp = other.Hp;
-		this.Spd = other.Spd;
-		this.Def = other.Def;
-		this.Avd = other.Avd;
-		this.Cri = other.Cri;
-		this.Size = other.Size;
-		this.Chapter = other.Chapter;
-		this.Sprite = (Sprite[])other.Sprite.Clone();
-		this.Skill = other.Skill;
-		this.Property = other.Property;
+		Code = other.Code;
+		Name = other.Name;
+		Target = other.Target;
+		Hp = other.Hp;
+		Spd = other.Spd;
+		Def = other.Def;
+		Avd = other.Avd;
+		Cri = other.Cri;
+		Size = other.Size;
+		Chapter = other.Chapter;
+		Sprite = (Sprite[])other.Sprite.Clone();
+		Skill = other.Skill;
+		Property = other.Property;
 	}
 }
