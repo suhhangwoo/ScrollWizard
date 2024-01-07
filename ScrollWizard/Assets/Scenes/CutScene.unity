@@ -172,6 +172,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e0938c392381d5a4997624417d1917e3, type: 3}
   - {fileID: 21300000, guid: e0938c392381d5a4997624417d1917e3, type: 3}
   - {fileID: 21300000, guid: e0938c392381d5a4997624417d1917e3, type: 3}
+  Die: 01010000
+  state: 2
 --- !u!4 &89539631
 Transform:
   m_ObjectHideFlags: 0
@@ -216,9 +218,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a5173363b2c70a4ca69cb355928ac57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interval: 1.8
-  Duration: 1
+  Interval: 2.1
+  Duration: 1.5
   TargetScaleRatio: 1.1
+  Distance: 1
 --- !u!4 &440603830
 Transform:
   m_ObjectHideFlags: 0
